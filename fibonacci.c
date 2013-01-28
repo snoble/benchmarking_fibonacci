@@ -2,6 +2,17 @@
 #include <math.h>
 #include <time.h>
 
+unsigned long int fib_iterative(unsigned long int n) {
+    unsigned long int curr = 0, prev = 1, temp, i;
+    for (i = 0; i < n; i++) {
+        temp = curr;
+        curr += prev;
+        prev = temp;
+    }
+
+    return curr;
+}
+
 unsigned long int fib_analytic(unsigned long int n) {
    return lround((pow(0.5 + 0.5 * sqrt(5.0), n) -
                   pow(0.5 - 0.5 * sqrt(5.0), n)) /
@@ -21,7 +32,7 @@ unsigned long int fib_helper(unsigned long int remaining, long int back_one, lon
 }
 
 unsigned long int fib(unsigned long int n) {
-  return fib_helper(n, 1, -1); 
+  return fib_helper(n, 1, -1);
 }
 
 void run_test(unsigned long int(*f)(unsigned long int)){
@@ -50,5 +61,8 @@ main()
 
   printf("analytic opt fib: ");
   run_test(fib_analytic_opt);
+
+  printf("iterative fib: ");
+  run_test(fib_iterative);
 }
 
