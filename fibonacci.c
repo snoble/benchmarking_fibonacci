@@ -3,7 +3,9 @@
 #include <time.h>
 
 unsigned long int fib_iterative(unsigned long int n) {
-    unsigned long int curr = 0, prev = 1, temp, i;
+    unsigned long int curr = 0, prev = 1, temp;
+    int i;
+
     for (i = 0; i < n; i++) {
         temp = curr;
         curr += prev;
